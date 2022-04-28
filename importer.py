@@ -50,7 +50,7 @@ def importer():
     raw = "<s> " + raw
 
     mcr_minicorpus = []
-    mcr_minicorpus += deneme.split(" ")
+    mcr_minicorpus += raw.split(" ")
     mcr_minicorpus = list(filter(None, mcr_minicorpus))
     return mcr_minicorpus
 
