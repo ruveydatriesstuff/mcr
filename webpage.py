@@ -19,5 +19,3 @@ if gen_button:
     generate()
 else:
     st.text("Press the Generate button above to get started. ")
-
-# st.button("Generate", on_click=st.text_area("", value=generator.main(), disabled=True))
