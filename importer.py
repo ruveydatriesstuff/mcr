@@ -24,7 +24,7 @@ def initializer():
 
         lyrics = re.sub("<.*>", "", mcr_clean[1])
         lyrics = re.sub("<.*", "", lyrics)
-        lyrics = re.sub("([(),!.?]|&.*;|\r|<s>)", "", lyrics)
+        lyrics = re.sub("([,!.?]|&.*;|\r|<s>)", "", lyrics)
 
         lower_lyrics = lyrics.lower()
         temp1 = len(all_lyrics.split("\n"))
