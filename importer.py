@@ -56,5 +56,5 @@ def importer():
 
 
 def main():
-    #writer(initializer(), "w")
+    writer(initializer(), "w")
     return importer()
