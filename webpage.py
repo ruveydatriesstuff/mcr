@@ -12,8 +12,9 @@ def generate():
 
 onopen()
 st.header("My Computational Romance")
-st.text("Created for LING360 Computational Linguistics at Boğaziçi University. ")
 st.text("A My Chemical Romance lyrics generator using n-grams. ")
+st.text("Created for LING360 Computational Linguistics at Boğaziçi University. ")
+
 gen_button = st.button("Generate")
 
 if gen_button:
