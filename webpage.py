@@ -11,8 +11,9 @@ def generate():
 
 
 onopen()
-st.header("MCR Lyrics Generator")
-st.text("Welcome to a work in progress for our Computational Linguistics class.")
+st.header("My Computational Romance")
+st.text("A My Chemical Romance lyrics generator using n-grams. \n")
+st.text("Created to fulfill the requirements of LING360 Computational Linguistics at Bogazici University. ")
 gen_button = st.button("Generate")
 
 if gen_button:
