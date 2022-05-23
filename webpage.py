@@ -13,7 +13,7 @@ def generate():
 onopen()
 st.header("My Computational Romance")
 st.caption("Created to fulfill the requirements of LING360 Computational Linguistics at Boğaziçi University. \n")
-st.text("A My Chemical Romance lyrics generator using n-grams. \n")
+st.text("\n A My Chemical Romance lyrics generator using n-grams. \n")
 gen_button = st.button("Generate")
 
 if gen_button:
