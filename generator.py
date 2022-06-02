@@ -1,5 +1,8 @@
-# -*- coding: utf-8 -*-
-
+"""
+This script includes the methods that create the n-gram models and generate
+songs based on those. 
+This script requires `scipy` and `nltk` to be installed.
+"""
 
 import re
 from scipy import stats
@@ -10,7 +13,7 @@ from importer import main as impmain
 
 
 def Bigram(line):
-    '''
+    """
     Creates tuples for bigram model. 
     
     Parameters: 
@@ -18,7 +21,7 @@ def Bigram(line):
         
     Returns:
         tuples (arr): An array containing bigrams created from the line input. 
-    '''
+    """
     tuples = []
     for i in range(len(line) - 1):
         tuples.append((line[i], line[i + 1]))
@@ -26,10 +29,10 @@ def Bigram(line):
 
 
 def globalize():
-    '''
+    """
     Creates global variables for ease of access and generation while the program 
     is running. Also creates the bigram and trigram models for generation. 
-    '''
+    """
     global mcr_minicorpus
     global mcr_bigrams
     global mcr_bg_count
@@ -64,7 +67,7 @@ def globalize():
 
 
 def bigen(size, end):
-    '''
+    """
     Generates lines based on bigram model. 
     
     Parameters:
@@ -75,7 +78,7 @@ def bigen(size, end):
         length is reached until </s> symbol is encountered. 
     Returns:
         res (str): Resulting lyrics generated using the bigram model. 
-    '''
+    """
     current_word = "<s>"
     res = " "
     for i in range(size):
@@ -98,13 +101,13 @@ def bigen(size, end):
 
 
 def initialize():
-    '''
+    """
     Creates the first element of the tuple to initialize trigram generation. 
     
     Returns: 
         inittuple (tuple): Tuple where the first element is <s> and the second
         element is generated using the bigram model. 
-    '''
+    """
     probable_words = list(bigram_pbs["<s>"].samples())
     word_probabilities = [bigram_pbs["<s>"].prob(word) for word in probable_words]
     result = stats.multinomial.rvs(1, word_probabilities)
@@ -114,7 +117,7 @@ def initialize():
 
 
 def trigen(size, end):
-    '''
+    """
     Generates lines based on trigram model. Uses bigram model to generate the first
     word to allow trigram generation. 
     
@@ -126,7 +129,7 @@ def trigen(size, end):
         length is reached until </s> symbol is encountered. 
     Returns:
         res (str): Resulting lyrics generated using the trigram model. 
-    '''
+    """
     curr_tuple = initialize()
     res = " "
     for i in range(size):
@@ -150,14 +153,14 @@ def trigen(size, end):
 
 
 def generator():
-    '''
+    """
     Creates a song using bigram and trigram models. 
     Bigram and trigram usage as well as generation length is chosen arbitrarily. This can
     be used to receive input from the user in the future to generate a song accordingly. 
     
     Returns:
         res (str): Resulting lyrics generated using bigram and trigram models. 
-    '''
+    """
     res = ""
     s_name = trigen(2, True)
     s_chorus = trigen(5, False)
