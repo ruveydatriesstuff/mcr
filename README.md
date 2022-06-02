@@ -12,6 +12,6 @@ Contribution percentages are not accurate as the project was mostly written loca
 
 # Created by
 
-Ruveyda Sahyar - ruveyda.sahyar@boun.edu.tr - [@ruvishere](https://twitter.com/ruvishere) 
+Ruveyda Sahyar - ruveyda.sahyar@boun.edu.tr
 
 Nurdan Kose - 07nurdan.kose@gmail.com
