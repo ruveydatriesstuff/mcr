@@ -3,10 +3,17 @@ import generator as mcrgen
 
 
 def onopen():
+    '''
+    Creates the n-gram models when the page is opened. 
+    '''
     mcrgen.globalize()
 
 
 def generate():
+    '''
+    Generates lyrics using the generator and prints them on the webpage.
+    The lyrics are printed in a codeblock arbitrarily, based on aesthetic preference.
+    '''
     st.code(mcrgen.main(), language="none")
 
 
