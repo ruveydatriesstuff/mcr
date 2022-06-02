@@ -1,11 +1,13 @@
+"""
+This script includes the methods that read My Chemical Romance lyrics from a webpage, write those into
+a .txt file and read the .txt file as an array for use with n-gram models. 
+"""
 import re
 from urllib.request import urlopen  
 
 
-
-
 def initializer():
-    '''
+    """
     Reads My Chemical Romance song names from a webpage and gets the relevant lyric page for each song. 
     Cleans the .html file, then returns the lyrics for all the songs as a string. 
     
@@ -15,7 +17,7 @@ def initializer():
     
     Returns: 
         all_lyrics (str): A string containing every My Chemical Romance lyric found. 
-    '''
+    """
     url_main = "http://www.plyrics.com/m/mychemicalromance.html"
     file = urlopen(url_main)
     landing = file.read().decode('utf-8')
@@ -48,14 +50,14 @@ def initializer():
 
 
 def writer(lyrics, param):
-    '''
+    """
     Takes a string and a mode parameter as an argument, then writes 
     that string to the lyrics .txt file. 
     
     Parameters: 
         lyrics (str): Text to be written in all_lyrics.txt
         param (str): "w" or "a", the mode to open all_lyrics.txt 
-    '''
+    """
     with open("all_lyrics.txt", param, encoding="utf-8") as file:
         for line in lyrics:
             file.write(line)
@@ -63,7 +65,7 @@ def writer(lyrics, param):
 
 
 def importer():
-    '''
+    """
     Reads the contents of the lyrics .txt file, then adds each line to an array to 
     be used for n-gram generation. Returns the array. 
     Exists mainly to get the lyrics from a local database so as to save time when
@@ -72,7 +74,7 @@ def importer():
     Returns:
         mcr_minicorpus (arr): An array containing the lyrics found in all_lyrics.txt,
         to be used in generating n-grams. 
-    '''
+    """
     with open("all_lyrics.txt", "r", encoding="utf-8") as file:
         text = file.read()
     raw = re.sub("(\n)+", " </s> <s> ", text)
