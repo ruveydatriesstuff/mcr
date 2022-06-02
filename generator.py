@@ -171,5 +171,30 @@ def generator():
     return res
 
 
+def perplexity(result):
+    """
+    A stub for a perplexity calculation as an evaluation metric. Takes an output from one of the
+    n-gram models and calculates perplexity.
+    
+    Parameters:
+        result (str): Generated output from one of the n-gram models.
+    
+    Returns: 
+        prod**(1/len(result)) (float): Perplexity calculated for given string. 
+    """
+    result = result.split(" ")
+    current_word = "<s>"
+    prod = 1
+    result.remove('')
+    result.remove('')
+    for generated in result:
+        probable_words = list(bigram_pbs[current_word].samples())
+        word_probabilities = [bigram_pbs[current_word].prob(word) for word in probable_words]
+        temp = probable_words.index(generated)
+        prod = prod*(1/word_probabilities[temp])
+        current_word = generated
+    return prod**(1/len(result))
+
+
 def main():
     return generator()
